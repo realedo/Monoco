@@ -12,7 +12,10 @@ class User(Base):
     id = Column(Integer, primary_key=True, index=True)
     email = Column(String, unique=True, nullable=False)
     password_hash = Column(String, nullable=False)
-    stripe_customer_id = Column(String, nullable=True, unique=True)  
+
+    
+    #stripe_customer_id = Column(String, nullable=True, unique=True)  
+
     api_key = Column(String, unique=True, nullable=True, default=lambda: str(uuid.uuid4()))
     handle = Column(String, unique=True, nullable=False)
     superuser = Column(Boolean, nullable=False, default=False)
@@ -32,7 +35,7 @@ class Subscription(Base):
 
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("users.id"))
-    tier = Column(String, nullable=False)  # "Base", "Plus", "Premium"
+    tier = Column(String, nullable=False)  
     renewal_date = Column(DateTime, nullable=False)
     starting_date= Column(DateTime, default=datetime.utcnow)
 
@@ -59,8 +62,8 @@ class Domain(Base):
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     domain_name = Column(String, unique=True, nullable=False)  # each domain is unique
-    language = Column(String, nullable=True)
-    FAQs = Column(Text, nullable=True)
+    #language = Column(String, nullable=True)
+    #FAQs = Column(Text, nullable=True)
     app_name = Column(String, nullable= True)
     scope = Column(Text, nullable=True)
     customer_service_info = Column(Text, nullable=True)
