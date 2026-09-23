@@ -1,0 +1,3 @@
+venv
+python-concurrrent-postgre/database.db
+python-sqlalchemy/database.db
